@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -18,8 +20,7 @@ import java.io.*;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
-    private Button scanBtn;
-    private Button mQuery;
+    private ImageButton scanBtn;
     private TextView formatTxt, contentTxt;
     public String UPC;
 
@@ -28,38 +29,32 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        scanBtn = (Button)findViewById(R.id.scan_button);
+        scanBtn = (ImageButton)findViewById(R.id.scan_button);
         formatTxt = (TextView)findViewById(R.id.scan_format);
         contentTxt = (TextView)findViewById(R.id.scan_content);
-        mQuery = (Button) findViewById(R.id.query);
         scanBtn.setOnClickListener(this);
-        mQuery.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                DataParser chapathi = new DataParser();
-                chapathi.execute();
-            }
-        });
+
 
     }
     public void onClick(View v){
-        if(v.getId()==R.id.scan_button) {
+        if(v.getId()==R.id.scan_button)
+        {
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
         }
-            if(v.getId() == R.id.query)
-            {
-                
-            }
+
 
 
     }
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanningResult != null) {
-            UPC = scanningResult.getContents();
+            UPC = scanningResult.getContents().toString();
             String scanFormat = scanningResult.getFormatName();
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + UPC);
+            DataParser dp = new DataParser();
+            dp.execute();
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),
@@ -72,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
         private String stream;
 
-        public TextView mResult = (TextView) findViewById(R.id.result);
+        public TextView mResult = (TextView) findViewById(R.id.price);
         private String url = "http://api.walmartlabs.com/v1/items?apiKey=s76z46gcjz56dmjpm3ca7qz8&upc=" + UPC + "&format=json";
 
 
@@ -91,9 +86,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
             }
             catch (IOException e){
-                throw new RuntimeException(e);
+                return "Error";
+                //throw new RuntimeException(e);
 
             }
+
 
         }
 
@@ -101,11 +98,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         protected void onPostExecute(String message) {
             try{
                 JSONObject reader = new JSONObject(message);
-                mResult.setText(reader.getString("salePrice"));
+                mResult.setText(reader.getJSONArray("items").getJSONObject(0).getString("salePrice"));
             }
             catch(JSONException f){
-                mResult.setText("Not Found");
-
+                throw new RuntimeException(f);
             }
         }
 

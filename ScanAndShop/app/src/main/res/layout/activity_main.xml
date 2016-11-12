@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,62 +9,60 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="gunnhacks.scanandshop.MainActivity">
+    tools:context="gunnhacks.scanandshop.MainActivity"
+    android:backgroundTint="@android:color/white"
+    android:padding="30dp">
 
     <TextView
+        android:text="Click to Scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView" />
+        android:id="@+id/Scan_Text"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:textSize="30sp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="14dp"
-        android:id="@+id/barcodeText"
-        android:hint="barcode" />
-
-    <Button
-        android:text="Query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/barcodeText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="13dp"
-        android:id="@+id/query" />
+    <ImageButton
+        app:srcCompat="@drawable/ic_camera_alt_black_24dp"
+        android:id="@+id/scan_button"
+        android:backgroundTint="@android:color/white"
+        android:nestedScrollingEnabled="true"
+        android:scaleType="fitXY"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_above="@+id/Scan_Text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/query"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/result" />
-    <Button android:id="@+id/scan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Scan" />
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/Circle_Decoration"
+        android:layout_alignStart="@+id/Circle_Decoration"
+        android:layout_marginTop="57dp"
+        android:id="@+id/price" />
+
     <TextView
-        android:id="@+id/scan_format"
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textIsSelectable="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/scan_button" />
+        android:layout_below="@+id/price"
+        android:layout_alignLeft="@+id/scan_button"
+        android:layout_alignStart="@+id/scan_button"
+        android:layout_marginTop="31dp"
+        android:id="@+id/scan_format" />
+
     <TextView
-        android:id="@+id/scan_content"
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textIsSelectable="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/scan_format" />
+        android:layout_below="@+id/scan_format"
+        android:layout_alignLeft="@+id/Circle_Decoration"
+        android:layout_alignStart="@+id/Circle_Decoration"
+        android:layout_marginTop="29dp"
+        android:id="@+id/scan_content" />
+
 </RelativeLayout>
