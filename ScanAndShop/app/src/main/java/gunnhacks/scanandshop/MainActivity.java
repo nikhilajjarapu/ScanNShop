@@ -1,5 +1,6 @@
 package gunnhacks.scanandshop;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -14,16 +15,23 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+
 import org.json.*;
 import java.net.*;
 import java.io.*;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     private ImageButton scanBtn;
     private TextView formatTxt, contentTxt;
     public String UPC = "673419189682";
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
     @Override
@@ -97,8 +105,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         @Override
         protected void onPostExecute(String message) {
             try{
+
                 JSONObject reader = new JSONObject(message);
                 mResult.setText(reader.getJSONArray("items").getJSONObject(0).getString("salePrice"));
+                String saleprice = reader.getJSONArray("items").getJSONObject(0).getString("salePrice");
+                String itemname = reader.getJSONArray("items").getJSONObject(0).getString("name");
+
+                String entry = itemname;
+                DatabaseReference myRef = database.getReference(entry);
+                myRef.setValue(saleprice);
             }
             catch(JSONException f){
                 throw new RuntimeException(f);
