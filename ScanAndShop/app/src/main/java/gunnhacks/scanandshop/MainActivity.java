@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     private GestureDetectorCompat gestureObject;
 
     private ImageButton scanBtn;
-    private Button cartBtn;
+    private ImageButton cartBtn;
+    private ImageButton dealsBtn;
     public String UPC = "673419189682";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scanBtn = (ImageButton)findViewById(R.id.scan_button);
-        cartBtn = (Button)findViewById(R.id.cart);
+        cartBtn = (ImageButton)findViewById(R.id.cart);
         scanBtn.setOnClickListener(this);
         cartBtn.setOnClickListener(this);
 

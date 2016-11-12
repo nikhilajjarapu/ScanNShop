@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_height="76dp"
+        android:layout_width="match_parent"
+        android:weightSum="1"
+        android:id="@+id/top_format">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@mipmap/money_bag"
+            android:id="@+id/money_icon"
+            android:layout_weight="0.78"
+            android:background="@color/colorPrimaryDark" />
+
+        <TextView
+            android:text="Payment Info"
+            android:layout_width="316dp"
+            android:layout_height="match_parent"
+            android:id="@+id/title"
+            android:textSize="40sp"
+            android:textAlignment="center"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@android:color/white"
+            android:paddingTop="12dp" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/cardNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Credit Card Number"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/secCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Security Code"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/expDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Expiration Date"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:text="Finalize Payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/pay"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

@@ -87,6 +87,11 @@ public class Checkout extends AppCompatActivity implements OnClickListener{
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+        if(view.getId()==R.id.pay)
+        {
+            Intent intent = new Intent(this, Pay.class);
+            startActivity(intent);
+        }
     }
 
 
