@@ -60,6 +60,14 @@
             android:layout_weight="0.60">
 
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_camera_alt_black_24dp"
+                android:id="@+id/scan"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
+
             <TextView
                 android:text="Total"
                 android:layout_height="wrap_content"
