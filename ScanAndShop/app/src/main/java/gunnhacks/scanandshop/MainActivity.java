@@ -26,7 +26,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import android.support.v4.view.GestureDetectorCompat;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+
 public class MainActivity extends AppCompatActivity implements OnClickListener{
+
+    private GestureDetectorCompat gestureObject;
 
     private ImageButton scanBtn;
     private TextView formatTxt, contentTxt;
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         contentTxt = (TextView)findViewById(R.id.scan_content);
         scanBtn.setOnClickListener(this);
 
+        gestureObject = new GestureDetectorCompat(this, new LearnGesture());
 
     }
     public void onClick(View v){
@@ -51,7 +58,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
         }
-
+        if(v.getId()==R.id.cart)
+        {
+            Intent intent = new Intent(this, Checkout.class);
+            startActivity(intent);
+        }
 
     }
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -120,6 +131,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             }
         }
 
+    }
+
+    class LearnGesture extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
+            if(event2.getX()>event1.getX())
+            { //left to right swipe
+
+            } else if(event2.getX()<event1.getX())
+            {
+                Intent intent = new Intent(MainActivity.this, Checkout.class);
+                startActivity(intent);
+            }
+            return true;
+        }
     }
 
 }
