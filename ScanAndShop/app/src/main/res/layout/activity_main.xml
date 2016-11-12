@@ -36,7 +36,8 @@
             android:layout_height="183dp"
             android:scaleType="fitXY"
             android:background="@color/colorPrimaryDark"
-            android:layout_width="80dp" />
+            android:layout_width="80dp"
+            android:fadingEdge="horizontal|vertical" />
 
     </LinearLayout>
 
