@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     private GestureDetectorCompat gestureObject;
 
     private ImageButton scanBtn;
-    private TextView formatTxt, contentTxt;
+    private Button cartBtn;
     public String UPC = "673419189682";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -45,11 +45,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         scanBtn = (ImageButton)findViewById(R.id.scan_button);
-        formatTxt = (TextView)findViewById(R.id.scan_format);
-        contentTxt = (TextView)findViewById(R.id.scan_content);
+        cartBtn = (Button)findViewById(R.id.cart);
         scanBtn.setOnClickListener(this);
+        cartBtn.setOnClickListener(this);
 
-        gestureObject = new GestureDetectorCompat(this, new LearnGesture());
+
+        //gestureObject = new GestureDetectorCompat(this, new LearnGesture());
 
     }
     public void onClick(View v){
@@ -70,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         if (scanningResult != null) {
             UPC = scanningResult.getContents().toString();
             String scanFormat = scanningResult.getFormatName();
-            formatTxt.setText("FORMAT: " + scanFormat);
-            contentTxt.setText("CONTENT: " + UPC);
+            //formatTxt.setText("FORMAT: " + scanFormat);
+            //contentTxt.setText("CONTENT: " + UPC);
             DataParser dp = new DataParser();
             dp.execute();
         }
@@ -86,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
         private String stream;
 
-        public TextView mResult = (TextView) findViewById(R.id.price);
         private String url = "http://api.walmartlabs.com/v1/items?apiKey=s76z46gcjz56dmjpm3ca7qz8&upc=" + UPC + "&format=json";
 
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             try{
 
                 JSONObject reader = new JSONObject(message);
-                mResult.setText(reader.getJSONArray("items").getJSONObject(0).getString("salePrice"));
+                //mResult.setText(reader.getJSONArray("items").getJSONObject(0).getString("salePrice"));
                 String saleprice = reader.getJSONArray("items").getJSONObject(0).getString("salePrice");
                 String itemname = reader.getJSONArray("items").getJSONObject(0).getString("name");
 
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     }
 
-    class LearnGesture extends GestureDetector.SimpleOnGestureListener {
+    /*class LearnGesture extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
             if(event2.getX()>event1.getX())
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             }
             return true;
         }
-    }
+    }*/
 
 }
 
