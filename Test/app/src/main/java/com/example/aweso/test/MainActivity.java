@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEditRead;
     private TextView display;
     private String test = "Hello";
+    private String actualReference = "test-35816";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override
@@ -45,16 +46,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         mRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String reference = mEditRead.getText().toString();
-                DatabaseReference fatso = database.getReference(reference);
+                DatabaseReference fatso = database.getReference();
                 fatso.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    String val = "";
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String val = dataSnapshot.getValue().toString();
+                        for(DataSnapshot childsnap : dataSnapshot.getChildren())
+                        {
+                            val = val + childsnap.getKey().toString() + "=" + childsnap.getValue().toString() + ", ";
+                        }
+                        //String val = dataSnapshot.getValue().toString();
                         display.setText(val);
                     }
 
