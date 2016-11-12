@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
     private Button scanBtn;
     private Button mQuery;
     private TextView formatTxt, contentTxt;
-    public String UPC;
+    public String UPC = "673419189682";
+
 
 
     @Override
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         }
             if(v.getId() == R.id.query)
             {
-                
+                DataParser dp = new DataParser();
+                dp.execute();
             }
 
 
