@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
 
     private ImageButton scanBtn;
     private TextView formatTxt, contentTxt;
-    public String UPC;
+    public String UPC = "673419189682";
+
 
 
     @Override
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan();
         }
-
 
 
     }
