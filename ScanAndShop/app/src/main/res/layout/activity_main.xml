@@ -23,6 +23,7 @@
         android:ems="10"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="14dp"
         android:id="@+id/barcodeText"
         android:hint="barcode" />
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/barcodeText"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="13dp"
         android:id="@+id/query" />
 
@@ -42,7 +44,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/query"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp"
         android:id="@+id/result" />
-
+    <Button android:id="@+id/scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Scan" />
+    <TextView
+        android:id="@+id/scan_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/scan_button" />
+    <TextView
+        android:id="@+id/scan_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/scan_format" />
 </RelativeLayout>
