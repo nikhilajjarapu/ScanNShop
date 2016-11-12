@@ -29,6 +29,7 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.stripe:stripe-android:+'
     compile 'com.google.firebase:firebase-database:9.6.1'
+    compile 'io.card:android-sdk:5.4.2'
     testCompile 'junit:junit:4.12'
 }
 

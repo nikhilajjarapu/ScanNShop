@@ -73,7 +73,7 @@
         android:text="Finalize Payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pay"
+        android:id="@+id/finalize"
         android:textSize="20sp"
         android:fontFamily="sans-serif"
         android:background="@color/colorPrimaryDark"
