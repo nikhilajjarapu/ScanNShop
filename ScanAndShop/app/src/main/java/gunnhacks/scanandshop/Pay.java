@@ -29,10 +29,10 @@ public class Pay extends AppCompatActivity implements OnClickListener{
     }
 
   public void onClick(View view){
-//        if(view.getId()==R.id.finalize){
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
+        if(view.getId()==R.id.finalize){
+            Intent intent = new Intent(this, Final.class);
+            startActivity(intent);
+        }
 
     }
 }

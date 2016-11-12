@@ -17,22 +17,22 @@ import android.widget.TextView;
  */
 
 public class Final extends AppCompatActivity implements OnClickListener{
-    private Button payBtn;
+    private ImageButton finalConBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.finalize);
-        payBtn = (Button) findViewById(R.id.finalize);
-        payBtn.setOnClickListener(this);
+        finalConBtn = (ImageButton) findViewById(R.id.finalconfirm);
+        finalConBtn.setOnClickListener(this);
 
     }
 
     public void onClick(View view){
-//        if(view.getId()==R.id.finalize){
-//            Intent intent = new Intent(this, MainActivity.class);
-//            startActivity(intent);
-//        }
+        if(view.getId()==R.id.finalconfirm){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
     }
 }
